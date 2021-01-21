@@ -13,7 +13,6 @@ start() {
      echo "toilet -F metal -F border -f future style-X-term" >> $PREFIX/etc/bash.bashrc
 }
 
-toilet -F metal -F border -f future style-X-term
 echo "installing style-X-term...."
 setup
 keys
