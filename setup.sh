@@ -33,6 +33,7 @@ if [[ "$git_setup" == "y" ]]; then
         read ssh_setup
 else
 	printf "git setup skipped"
+fi
 
 if [[ "$ssh_setup" == "y" ]]; then
                echo "setting up ssh for git"
@@ -44,6 +45,7 @@ if [[ "$ssh_setup" == "y" ]]; then
                echo "#############"
         else
 	printf "git ssh setup skipped"
+fi
 
-
+am broadcast --user 0 -a com.termux.app.reload_style com.termux > /dev/null
 echo "setup done"
