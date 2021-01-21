@@ -46,4 +46,4 @@ if [[ "$ssh_setup" == "y" ]]; then
 	printf "git ssh setup skipped"
 
 
-printf "setup done"
+echo "setup done"
