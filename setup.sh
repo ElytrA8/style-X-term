@@ -1,12 +1,12 @@
 #!/usr/bin/env sh
 
 setup() {
-     apt-get update -y --silent
-     apt-get install -y git openssh toilet --silent
+     apt-get update -y --silent >> /dev/null
+     apt-get install -y git openssh toilet --silent >> /dev/null
 }
 keys() {
      mkdir -p ~/.termux
-     wget https://raw.githubusercontent.com/ElytrA8/style-X-term/main/termux.properties -O ~/.termux/termux.properties
+     wget https://raw.githubusercontent.com/ElytrA8/style-X-term/main/termux.properties -O ~/.termux/termux.properties >> /dev/null
 }
 start() {
      cp $PREFIX/etc/bash.bashrc $PREFIX/etc/bash.bashrc.bk
@@ -22,7 +22,7 @@ start
 echo "wanna setup git (y/n)"
 read git_setup
 if [[ "$git_setup" == "y" ]]; then
-	printf "setting up git"
+	echo "setting up git"
 	echo "Enter Username: "
         read username
         git config --global user.name "$username"
