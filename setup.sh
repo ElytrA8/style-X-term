@@ -10,7 +10,6 @@ keys() {
 }
 start() {
      cp $PREFIX/etc/bash.bashrc $PREFIX/etc/bash.bashrc.bk
-     rm -r $PREFIX/etc/motd
      echo "toilet -F metal -F border -f future style-X-term" >> $PREFIX/etc/bash.bashrc
 }
 
@@ -19,6 +18,7 @@ echo "installing style-X-term...."
 setup
 keys
 start
+
 echo "wanna setup git (y/n)"
 read git_setup
 if [[ "$git_setup" == "y" ]]; then
@@ -36,16 +36,15 @@ else
 fi
 
 if [[ "$ssh_setup" == "y" ]]; then
-               echo "setting up ssh for git"
-               echo "don't change name of key in above step"
-               ssh-keygen -t ed25519 -C "$mail"
-               echo "#############"
-               echo "printing key"
-               cat ~/.ssh/id_ed25519.pub
-               echo "#############"
-        else
-	printf "git ssh setup skipped"
+       echo "setting up ssh for git"
+       echo "don't change name of key in above step"
+       ssh-keygen -t ed25519 -C "$mail"
+       echo "#############"
+       echo "printing key"
+       cat ~/.ssh/id_ed25519.pub
+       echo "#############"
+else
+       printf "git ssh setup skipped"
 fi
-
 am broadcast --user 0 -a com.termux.app.reload_style com.termux > /dev/null
 echo "setup done"
