@@ -23,6 +23,26 @@ echo "wanna setup git (y/n)"
 read git_setup
 if [[ "$git_setup" == "y" ]]; then
 	printf "setting up git"
-	
+	echo "Enter Username: "
+        read username
+        git config --global user.name "$username"
+        echo "Enter Git Mail: "
+        read mail
+        git config --global user.email "$mail"
+        echo "wanna setup git ssh (y/n)"
+        read ssh_setup
+        if [[ "$ssh_setup" == "y" ]]; then
+               echo "setting up ssh for git"
+               echo "don't change name of key in above step"
+               ssh-keygen -t ed25519 -C "$mail"
+               echo "#############"
+               echo "printing key"
+               cat ~/.ssh/id_ed25519.pub
+               echo "#############"
+        else
+	printf "git ssh setup skipped"       
+
 else
 	printf "git setup skipped"
+
+printf "setup done"
